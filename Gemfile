@@ -10,6 +10,9 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'bootstrap', '~> 4.0.0.alpha1'
+gem 'redcarpet'
+
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
