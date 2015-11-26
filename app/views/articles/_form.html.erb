@@ -1,23 +1,38 @@
-<%= form_for(@article) do |f| %>
-<% if @article.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+<div class="container">
+  <h1><%= title %></h1>
 
-    <ul>
-      <% @article.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="card">
+        <%= form_for(@article) do |f| %>
+          <div class="card-block">
+            <% if @article.errors.any? %>
+              <div id="error_explanation" class="alert alert-danger">
+                <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+                <ul>
+                  <% @article.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <fieldset class="form-group">
+              <%= f.label :title %><br>
+              <%= f.text_field :title %>
+            </fieldset>
+            <fieldset class="form-group">
+              <%= f.label :body %><br>
+              <%= f.text_area :body %>
+            </fieldset>
+          </div>
+          <div class="card-footer">
+            <%= f.submit 'Submit', class: 'btn btn-primary' %>
+            <%= link_to 'Show', @article, class: 'btn btn-warning'.concat(hide_btn_show ? ' hide' : '') %>
+            <%= link_to 'Back', articles_path, class: 'btn btn-info' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-<% end %>
-
-<fieldset class="form-group">
-  <%= f.label :title %><br>
-  <%= f.text_field :title %>
-</fieldset>
-<fieldset class="form-group">
-  <%= f.label :body %><br>
-  <%= f.text_area :body %>
-</fieldset>
-<%= f.submit 'Submit', class: 'btn btn-primary' %>
-<% end %>
+</div>
