@@ -1,21 +1,19 @@
-login: &login
-  adapter: mysql2
-  host: 127.0.0.1
-  port: 3306
-  username: root
-  password: password
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: vagrant
+  password: vagrant
+  pool: 5
 
 development:
+  <<: *default
   database: blog_development
-  <<: *login
 
-test: &test
+test:
+  <<: *default
   database: blog_test
-  <<: *login
-
-cucumber:
-  <<: *test
 
 production:
+  <<: *default
   database: blog_production
-  <<: *login
+  password: <%= ENV['BLOG_DATABASE_PASSWORD'] %>
