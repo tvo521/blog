@@ -5,3 +5,6 @@
 
 .idea/
 config/database.yml
+.bundle/
+.DS_Store
+.localized
